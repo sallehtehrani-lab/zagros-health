@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مرکز سلامت زاگرس | پنل سرمایه‌گذاری</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { darkBg: '#05070c', goldLux: '#d4af37', tealLux: '#0aa394' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Vazirmatn', sans-serif; background-color: #05070c; color: #e2e8f0; }
+    </style>
+</head>
+<body class="antialiased pt-24">
+
+    <!-- هدر -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-darkBg/80 backdrop-blur-md border-b border-white/[0.03] py-4 px-6 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <span class="text-sm font-black tracking-widest text-white">ZAGROS HEALTH</span>
+        </div>
+        <nav class="flex gap-6 text-xs font-bold text-slate-400">
+            <a href="index.html" class="hover:text-white transition">خانه</a>
+            <a href="floors.html" class="hover:text-white transition">مهندسی طبقات</a>
+            <a href="invest.html" class="text-tealLux">فرصت‌های سرمایه‌گذاری</a>
+        </nav>
+    </header>
+
+    <!-- بخش آنالیز عددی و فرم ثبت‌نام -->
+    <section class="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- چپ: جدول تحلیل پایداری سرمایه -->
+        <div class="lg:col-span-7 space-y-8">
+            <div class="space-y-3">
+                <span class="text-goldLux text-xs font-bold">بخش تحلیل اقتصادی پروژه</span>
+                <h2 class="text-3xl font-black text-white">چرا سرمایه‌گذاری در حوزه سلامت؟</h2>
+                <p class="text-slate-400 text-sm font-light leading-relaxed">
+                    در شرایط نوسانات ارزی و تورم، دارایی‌های فیزیکی گره‌خورده با خدمات استراتژیک (مانند سلامت و طبابت) پایدارترین نوع سوددهی و حفظ ارزش سرمایه را دارا هستند.
+                </p>
+            </div>
+
+            <!-- جدول آنالیز تمایز پروژه -->
+            <div class="overflow-hidden rounded-xl border border-white/10 bg-white/[0.01]">
+                <table class="w-full text-right text-xs">
+                    <thead class="bg-white/[0.03] text-slate-300">
+                        <tr>
+                            <th class="p-4 font-bold">مزیت استراتژیک ملک</th>
+                            <th class="p-4 font-bold">تأثیر در بازدهی سرمایه</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5 text-slate-400">
+                        <tr>
+                            <td class="p-4 font-medium text-white">لوکیشن انحصاری بلوار امین قم</td>
+                            <td class="p-4">ارزش افزوده ملکی بالاتر از میانگین رشد سالانه تورم.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-medium text-white">دو طبقه پارکینگ کلان هوشمند</td>
+                            <td class="p-4">رفع کامل بحران پارک خودرو برای مراجعین و در نتیجه تضمین مراجعه مکرر.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-medium text-white">زنجیره تشخیص تا درمان یکپارچه</td>
+                            <td class="p-4">جذب حداکثری مراجعین به دلیل عدم نیاز به خروج از سازه جهت خدمات جانبی.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- راست: فرم شیشه‌ای مشاوره -->
+        <div class="lg:col-span-5 bg-white/[0.02] border border-white/10 p-8 rounded-2xl shadow-2xl backdrop-blur-md">
+            <h3 class="text-lg font-bold text-white mb-2"><i class="fa-solid fa-shield-halved text-goldLux ml-2"></i>درخواست مشاوره واگذاری</h3>
+            <p class="text-xs text-slate-500 mb-6">جهت خرید واحدهای کلینیکال، مطب‌ها و لاین‌های تجاری همکف.</p>
+            
+            <form class="space-y-4" onsubmit="event.preventDefault(); alert('اطلاعات شما با موفقیت در دپارتمان فروش هلدینگ زاگرس ثبت شد. به زودی تماس می‌گیریم.');">
+                <div>
+                    <label class="text-[10px] uppercase font-bold text-slate-400 block mb-1">نام و نام خانوادگی</label>
+                    <input type="text" required class="w-full bg-black/40 border border-white/10 focus:border-tealLux px-4 py-3 rounded-xl text-sm text-white focus:outline-none" placeholder="مثال: دکتر صالحی" />
+                </div>
+                <div>
+                    <label class="text-[10px] uppercase font-bold text-slate-400 block mb-1">تلفن همراه مستقیم</label>
+                    <input type="tel" required class="w-full bg-black/40 border border-white/10 focus:border-tealLux px-4 py-3 rounded-xl text-sm text-left text-white focus:outline-none" placeholder="0912xxxxxxx" />
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-goldLux to-amber-600 text-black font-black text-xs py-3.5 rounded-xl transition hover:opacity-95">
+                    ثبت دیتای سرمایه‌گذاری
+                </button>
+            </form>
+        </div>
+
+    </section>
+
+    <footer class="bg-[#030508] border-t border-white/[0.03] py-12 px-6 text-center text-xs text-slate-500 mt-20">
+        <p>© تمامی حقوق مادی و معنوی متعلق به گروه ساختمانی زاگرس می‌باشد (تاسیس ۱۳۸۶)[span_3](start_span)[span_3](end_span).</p>
+    </footer>
+</body>
+</html>
