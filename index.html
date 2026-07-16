@@ -1,111 +1,493 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مرکز سلامت زاگرس | گروه ساختمانی زاگرس</title>
-    <!-- Tailwind CSS CDN -->
+    <title>مرکز سلامت زاگرس | امپراتوری بصری و مدرنیسم مفهومی</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Font Vazirmatn for beautiful Persian typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;700;900&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Premium Icons -->
+    <!-- Vazirmatn Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#05070c',
+                        goldLux: '#d4af37',
+                        tealLux: '#0aa394'
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
         body {
             font-family: 'Vazirmatn', sans-serif;
-            background-color: #0b0f19;
-            color: #f3f4f6;
+            background-color: #05070c;
+            color: #e2e8f0;
             overflow-x: hidden;
         }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+        /* Custom Smooth Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #05070c; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #0aa394; }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #ffffff 30%, #a5f3fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        ::-webkit-scrollbar-track {
-            background: #0b0f19;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1e293b;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #0d9488;
+        .gold-gradient {
+            background: linear-gradient(135deg, #ffe699 0%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     </style>
 </head>
-<body class="selection:bg-teal-500 selection:text-white">
+<body class="antialiased">
 
-    <!-- Header / Navigation -->
-    <header class="fixed top-0 left-0 w-full z-50 bg-[#0b0f19]/80 backdrop-blur-md border-b border-white/5 py-4 px-6 md:px-12 flex justify-between items-center transition-all duration-300">
-        <div class="flex items-center gap-3">
-            <span class="text-xl font-black tracking-widest text-teal-400">ZAGROS</span>
-            <span class="text-xs text-slate-400 border-r border-white/10 pr-3 hidden sm:inline">گروه ساختمانی</span>
+    <!-- Premium Custom Progress Bar at top -->
+    <div id="progress-bar" class="fixed top-0 right-0 h-[3px] bg-gradient-to-l from-tealLux to-cyan-400 z-50 w-0 transition-all duration-100"></div>
+
+    <!-- Luxury Header -->
+    <header class="fixed top-0 left-0 w-full z-40 bg-darkBg/60 backdrop-blur-xl border-b border-white/[0.03] py-5 px-6 md:px-12 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-tealLux to-cyan-500 flex items-center justify-center shadow-lg shadow-tealLux/20">
+                <i class="fa-solid fa-dna text-white text-xs animate-pulse"></i>
+            </div>
+            <span class="text-lg font-black tracking-widest text-white">ZAGROS <span class="text-tealLux text-xs font-normal">HEALTH</span></span>
         </div>
-        <nav class="hidden md:flex gap-8 text-sm font-medium text-slate-300">
-            <a href="#about" class="hover:text-teal-400 transition">درباره پروژه</a>
-            <a href="#specs" class="hover:text-teal-400 transition">مشخصات فنی</a>
-            <a href="#floors" class="hover:text-teal-400 transition">کاربری طبقات</a>
-            <a href="#investment" class="hover:text-teal-400 transition">فرصت سرمایه‌گذاری</a>
+        <nav class="hidden lg:flex gap-10 text-xs font-bold tracking-wide text-slate-400">
+            <a href="#vision" class="hover:text-white transition">رویکرد مفهومی</a>
+            <a href="#metrics" class="hover:text-white transition">ابعاد طلایی</a>
+            <a href="#interactive-floors" class="hover:text-white transition">مهندسی طبقات</a>
+            <a href="#privileges" class="hover:text-white transition">وجوه تمایز</a>
         </nav>
-        <a href="#contact" class="bg-teal-600 hover:bg-teal-500 text-white text-xs px-5 py-2.5 rounded-full font-bold transition shadow-lg shadow-teal-900/30">
-            تماس با ما
+        <a href="#invest" class="border border-tealLux/30 hover:border-tealLux bg-tealLux/10 hover:bg-tealLux text-white text-xs px-6 py-2.5 rounded-full font-bold transition duration-300">
+            پنل سرمایه‌گذاری
         </a>
     </header>
 
-    <!-- Hero Section with smooth intro animations -->
-    <section class="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden">
-        <!-- Background Gradient Glows -->
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl -z-10"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -z-10"></div>
-        
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <!-- Hero Text -->
-            <div class="lg:col-span-7 space-y-6 text-right" id="hero-text">
-                <span class="inline-block bg-teal-500/10 text-teal-400 text-xs px-4 py-1.5 rounded-full font-bold uppercase tracking-wider">سرمایه‌گذاری در قلب سلامت</span>
-                <h1 class="text-4xl md:text-6xl font-black leading-tight text-white">
-                    مرکز سلامت <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-400">زاگرس</span>
+    <!-- CINEMATIC HERO SECTION -->
+    <section class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
+        <!-- Ambient Background Lights -->
+        <div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-tealLux/10 rounded-full blur-[150px] pointer-events-none"></div>
+        <div class="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[150px] pointer-events-none"></div>
+
+        <div class="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 pt-20">
+            <!-- Left Grid: Text Content -->
+            <div class="lg:col-span-7 space-y-8 text-right" id="hero-content">
+                <div class="inline-flex items-center gap-2 bg-white/[0.03] border border-white/[0.08] px-4 py-2 rounded-full backdrop-blur-md">
+                    <span class="w-2 h-2 rounded-full bg-tealLux animate-ping"></span>
+                    <span class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-300">بزرگترین سازه درمانی بخش خصوصی استان</span>
+                </div>
+                <h1 class="text-4xl sm:text-6xl font-black leading-[1.2] text-gradient">
+                    مرکز سلامت زاگرس<br>
+                    <span class="gold-gradient font-medium text-3xl sm:text-5xl">سرمایه گذاری در قلب سلامت</span>
                 </h1>
-                <p class="text-lg text-slate-300 font-medium">جایی که تکنولوژی آرامش را در آغوش می‌گیرد.</p>
-                <p class="text-slate-400 text-sm md:text-base leading-relaxed max-w-xl">
-                    بزرگترین و مدرن‌ترین فضای درمانی بخش خصوصی در استان؛ نمادی از شکوه مدرنیسم مفهومی که با هدف بازتعریف استانداردهای مراقبتی و گردشگری سلامت بنا شده است.
+                <p class="text-base sm:text-lg text-slate-400 font-light max-w-2xl leading-relaxed">
+                    جایی که تکنولوژی آرامش را در آغوش می‌کشد. عبور از کلیشه‌های ملموس محیط‌های درمانی سنتی و ورود به قلمرو هندسه باشکوه و استراتژیک مدرنیسم مفهومی.
                 </p>
-                <div class="flex gap-4 pt-4">
-                    <a href="#about" class="bg-gradient-to-r from-teal-500 to-blue-500 hover:opacity-90 text-white px-8 py-3.5 rounded-xl font-bold shadow-xl shadow-teal-500/20 transition">شروع گشت‌وگذار در مجتمع</a>
-                    <a href="tel:02537488" class="border border-white/10 hover:bg-white/5 text-white px-6 py-3.5 rounded-xl font-bold transition flex items-center gap-2">
-                        <i class="fa-solid fa-phone text-teal-400"></i> ۰۲۵-۳۷۴۸۸
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="#interactive-floors" class="bg-gradient-to-r from-tealLux to-cyan-600 hover:opacity-90 text-white text-xs px-8 py-4 rounded-xl font-bold shadow-xl shadow-tealLux/20 transition-all duration-300">
+                        اکتشاف سه بعدی طبقات <i class="fa-solid fa-arrow-left mr-2"></i>
+                    </a>
+                    <a href="tel:02537488" class="bg-white/[0.02] border border-white/10 hover:bg-white/5 text-white text-xs px-6 py-4 rounded-xl font-bold transition flex items-center gap-2">
+                        <i class="fa-solid fa-phone text-tealLux"></i> خط ویژه: ۳۷۴۸۸-۰۲۵
                     </a>
                 </div>
             </div>
-            <!-- Hero Image Frame with smooth floating animation -->
-            <div class="lg:col-span-5 relative" id="hero-img-container">
-                <div class="absolute -inset-1 bg-gradient-to-r from-teal-500 to-blue-500 rounded-3xl blur opacity-30"></div>
-                <!-- Modern clinical rendering replacement for catalog visual -->
-                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1000&q=80" 
-                     alt="Zagros Health Center Render" 
-                     class="relative rounded-3xl w-full object-cover aspect-[4/5] shadow-2xl border border-white/10" />
+
+            <!-- Right Grid: Luxury Architectural Concept Floating -->
+            <div class="lg:col-span-5 relative" id="hero-media">
+                <div class="absolute -inset-2 bg-gradient-to-r from-tealLux to-cyan-500 rounded-2xl blur-xl opacity-20 animate-pulse"></div>
+                <!-- Premium Hospital Lobby Luxury Render -->
+                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80" 
+                     alt="Zagros Premium Render" 
+                     class="relative rounded-2xl w-full object-cover aspect-[4/5] shadow-2xl border border-white/10" />
+            </div>
+        </div>
+        
+        <!-- Animated Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 opacity-60">
+            <span class="text-[10px] tracking-widest text-slate-500 uppercase">ورود به اعماق پروژه</span>
+            <div class="w-[2px] h-10 bg-gradient-to-b from-tealLux to-transparent relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1/2 bg-white animate-bounce"></div>
             </div>
         </div>
     </section>
 
-    <!-- About Section with Triggered Animations -->
-    <section id="about" class="py-24 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/5 relative">
+    <!-- SECTION 2: THE VISION (CONCEPTUALISM) -->
+    <section id="vision" class="py-32 px-6 md:px-12 max-w-7xl mx-auto relative border-t border-white/[0.02]">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <!-- Left Side: Conceptual architectural image -->
-            <div class="lg:col-span-5 relative rounded-2xl overflow-hidden group" id="about-img">
-                <div class="absolute inset-0 bg-teal-950/20 z-10 transition-colors duration-300 group-hover:bg-transparent"></div>
-                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80" 
-                     alt="Modern Architecture" 
+            <!-- Left: Premium Abstract Structural Image -->
+            <div class="lg:col-span-5 relative rounded-2xl overflow-hidden shadow-2xl group" id="vision-img">
+                <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent z-10"></div>
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80" 
+                     alt="Abstract Architecture" 
                      class="w-full object-cover aspect-square transition-transform duration-700 group-hover:scale-105" />
             </div>
-            <!-- Right Side: Content -->
-            <div class="lg:col-span-7 space-y-6" id="about-content">
-                <div class="flex items-center gap-3 text-teal-400 font-bold text-sm">
-                    <span class="w-8 h-[2px] bg-teal-500"></span>
-                    <span>گروه ساختمانی زاگرس</span>
+            <!-- Right: Dynamic Text Reveal on Scroll -->
+            <div class="lg:col-span-7 space-y-6" id="vision-text">
+                <div class="flex items-center gap-3 text-tealLux font-bold text-xs uppercase tracking-wider">
+                    <span class="w-6 h-[1px] bg-tealLux"></span>
+                    <span>نگرش گروه ساختمانی زاگرس</span>
                 </div>
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white">از بنیان‌گذاری تا امپراتوری بصری مدرن</h2>
-                <p class="text-slate-400 leading-relaxed text-justify">
+                <h2 class="text-3xl md:text-5xl font-black text-white leading-tight">پروژه‌ای برای تبدیل یک مکان به یک «امپراتوری بصری»</h2>
+                <p class="text-slate-400 leading-relaxed text-justify font-light text-base">
+                    بنیان‌گذار گروه ساختمانی زاگرس (سید روح‌اله نورالدینی) سنگ بنای این جریان مهندسی را در سال ۱۳۸۶ گذاشت. در رندرهای معماری این نسخه از مجتمع، هر خط، هر متریال و هر زاویه با هدف خلق یک «تمایز مانا» انتخاب شده است. ما تابلوهای تبلیغاتی و نقاط تماس بصری را از جایگاه یک المان مزاحم به یک امضای بصری ارتقا دادیم تا پیام‌های برند به صورت جریان ناخودآگاه دیداری با نهایت ظرافت در ذهن مراجعین حک شود.
+                </p>
+                <blockquote class="border-r-2 border-goldLux pr-4 py-2 my-4 text-sm italic text-slate-300 bg-white/[0.01]">
+                    "این رندر، صرفاً یک تصویر نیست؛ این تجسم استراتژی ما برای عبور از ساختارهای سنتی درمانی است."
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: METRICS & SCALE (3D ANIMATED CARDS) -->
+    <section id="metrics" class="py-32 bg-white/[0.01] border-y border-white/[0.02] relative">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-20 space-y-4" id="metrics-head">
+                <span class="text-tealLux text-xs font-bold uppercase">ابعاد مهندسی عمران</span>
+                <h2 class="text-3xl md:text-4xl font-black text-white">شکوه معماری در قالب اعداد ریاضی</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="metrics-grid">
+                <!-- Card 1 -->
+                <div class="p-8 rounded-2xl bg-white/[0.01] border border-white/[0.04] hover:bg-white/[0.03] transition-all duration-300">
+                    <span class="text-slate-500 text-xs block mb-2">تعداد طبقات مثبت</span>
+                    <div class="text-3xl font-black text-white mb-2"><span class="text-tealLux">۹</span> طبقه روی همکف</div>
+                    <p class="text-xs text-slate-400 leading-relaxed">تفکیک دقیق کلینیک‌های فوق‌تخصصی مجزا بدون هم‌پوشانی لایه‌های درمانی.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="p-8 rounded-2xl bg-white/[0.01] border border-white/[0.04] hover:bg-white/[0.03] transition-all duration-300">
+                    <span class="text-slate-500 text-xs block mb-2">تعداد طبقات منفی</span>
+                    <div class="text-3xl font-black text-white mb-2"><span class="text-tealLux">۲</span> طبقه منفی</div>
+                    <p class="text-xs text-slate-400 leading-relaxed">اختصاص کامل به تصویربرداری فوق‌پیشرفته، فیزیوتراپی و پارکینگ‌های هوشمند اختصاصی.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="p-8 rounded-2xl bg-white/[0.01] border border-white/[0.04] hover:bg-white/[0.03] transition-all duration-300">
+                    <span class="text-slate-500 text-xs block mb-2">مساحت کل زیربنا</span>
+                    <div class="text-3xl font-black text-white mb-2"><span class="gold-gradient">۴۳,۳۷۰</span> مـتر</div>
+                    <p class="text-xs text-slate-400 leading-relaxed">زیربنای عظیم ساختمانی با طراحی یکپارچه جهت ارجاعات بین‌بخش سریع.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="p-8 rounded-2xl bg-white/[0.01] border border-white/[0.04] hover:bg-white/[0.03] transition-all duration-300">
+                    <span class="text-slate-500 text-xs block mb-2">مساحت کل عرصه زمین</span>
+                    <div class="text-3xl font-black text-white mb-2"><span class="gold-gradient">۴,۶۸۰</span> مـتر</div>
+                    <p class="text-xs text-slate-400 leading-relaxed">مساحت باز و بستر ساختاری پروژه در یکی از تاپ‌ترین شریان‌های لوکیشن قم.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: HIGHLY ADVANCED INTERACTIVE FLOORS (PINNED SCROLL) -->
+    <section id="interactive-floors" class="py-32 px-6 md:px-12 max-w-7xl mx-auto relative">
+        <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
+            <span class="text-tealLux text-xs font-bold uppercase">کالبدشکافی و کاربری معماری طبقات</span>
+            <h2 class="text-3xl md:text-5xl font-black text-white">سفر عمودی به درون ساختار زاگرس</h2>
+            <p class="text-slate-400 text-sm font-light">با اسکرول کردن، بخش‌ها و کاربری تفکیک‌شده مهندسی هر طبقه را به صورت زنده و تصویری لمس کنید.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <!-- Left Side: Interactive Images dynamic switcher on Scroll -->
+            <div class="lg:col-span-5 lg:sticky lg:top-32 space-y-4 hidden lg:block" id="floor-image-pin">
+                <div class="relative rounded-2xl overflow-hidden aspect-[4/3] border border-white/10 shadow-2xl">
+                    <!-- Image T3 -->
+                    <img id="img-f3" src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-500" alt="Cosmetic Dentistry" />
+                    <!-- Image T2 -->
+                    <img id="img-f2" src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" alt="Cardiology" />
+                    <!-- Image T1 -->
+                    <img id="img-f1" src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" alt="Ophthalmology" />
+                    <!-- Image G -->
+                    <img id="img-fg" src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" alt="Commercial Ground" />
+                    <!-- Image B1/B2 -->
+                    <img id="img-fb" src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" alt="Hydrotherapy Pool" />
+                </div>
+                <div class="text-center text-[11px] text-slate-500 tracking-wider">شبیه‌سازی سه‌بعدی کاربری واقعی فضاها</div>
+            </div>
+
+            <!-- Right Side: Content Sections triggering image changes -->
+            <div class="lg:col-span-7 space-y-12">
+                <!-- Box 3 -->
+                <div class="floor-trigger p-8 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-tealLux/20 transition-all duration-300" data-floor="f3">
+                    <div class="text-xs font-bold text-tealLux mb-2">سطح جراحی محدود و استتیک</div>
+                    <h3 class="text-xl font-bold text-white mb-4">طبقه سوم: کلینیک دندان‌پزشکی زیبایی و جراحی</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed font-light">
+                        این طبقه میزبان پیشرفته‌ترین کلینیک‌های دندان‌پزشکی زیبایی و پروتزهای تخصصی به همراه فاز جراحی‌های محدود سرپایی و اتاق عمل‌های فوق استریل منطبق بر کاتالوگ مهندسی زاگرس است.
+                    </p>
+                </div>
+                <!-- Box 2 -->
+                <div class="floor-trigger p-8 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-tealLux/20 transition-all duration-300" data-floor="f2">
+                    <div class="text-xs font-bold text-tealLux mb-2">سطح غدد و قلب عروق</div>
+                    <h3 class="text-xl font-bold text-white mb-4">طبقه دوم: اورولوژی، زنان، اختلالات خواب و قلب</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed font-light">
+                        تمرکز بر بیماری‌های غدد، اورولوژی تخصصی، تست‌های تخصصی اختلالات خواب و مجهزترین کلینیک قلب و عروق و اکوکاردیوگرافی با لاین‌های دسترسی کاملاً تفکیک‌شده.
+                    </p>
+                </div>
+                <!-- Box 1 -->
+                <div class="floor-trigger p-8 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-tealLux/20 transition-all duration-300" data-floor="f1">
+                    <div class="text-xs font-bold text-tealLux mb-2">سطح چکاپ‌های عمومی و تخصصی متراکم</div>
+                    <h3 class="text-xl font-bold text-white mb-4">طبقه اول: چشم‌پزشکی، داخلی، زنان، لاغری و گوارش</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed font-light">
+                        مجموعه‌ای هوشمند و متراکم برای بررسی سریع زنجیره سلامت از بررسی‌های بینایی‌سنجی پیشرفته گرفته تا بخش آندوسکوپی گوارش و تغذیه مدرن.
+                    </p>
+                </div>
+                <!-- Box G -->
+                <div class="floor-trigger p-8 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-tealLux/20 transition-all duration-300" data-floor="fg">
+                    <div class="text-xs font-bold text-goldLux mb-2">هاب تجاری و رفاهی مجتمع</div>
+                    <h3 class="text-xl font-bold text-white mb-4">طبقه همکف: ۳۵ واحد تجاری لوکس و برند شاپ‌ها</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed font-light">
+                        طراحی ۳۵ واحد تجاری استراتژیک در بخش همکف جهت استقرار داروخانه‌های بزرگ، برند شاپ‌های عینک، متریال پزشکی و کافه تریا اختصاصی مجموعه برای رفاه همراهان کادر درمان.
+                    </p>
+                </div>
+                <!-- Box B1/B2 -->
+                <div class="floor-trigger p-8 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-tealLux/20 transition-all duration-300" data-floor="fb">
+                    <div class="text-xs font-bold text-tealLux mb-2">پلتفرم تشخیص و توانبخشی عمیق سازه</div>
+                    <h3 class="text-xl font-bold text-white mb-4">زیرزمین اول و دوم: تصویربرداری، آزمایشگاه، فیزیوتراپی و آب‌درمانی</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed font-light">
+                        تعبیه پاتولوژی تمام اتوماتیک و بخش ام‌آرآی (MRI) در زیرزمین اول و قوی‌ترین مرکز هیدروتراپی (آب‌درمانی) و فیزیوتراپی منطقه در زیرزمین دوم به همراه موتورخانه‌های کلان هلدینگ.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: PRIVILEGES / ECOSYSTEM -->
+    <section id="privileges" class="py-32 bg-white/[0.01] border-t border-white/[0.02]">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-20 space-y-4" id="priv-head">
+                <span class="text-tealLux text-xs font-bold">اکوسیستم درمانی متمایز</span>
+                <h2 class="text-3xl md:text-4xl font-black text-white">پاسخ به چالش‌های بنیادین مراجعین</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="priv-grid">
+                <!-- Point 1 -->
+                <div class="p-8 rounded-2xl bg-darkBg border border-white/5 hover:border-goldLux/30 transition-all duration-500">
+                    <div class="text-goldLux text-2xl mb-6"><i class="fa-solid fa-layer-group"></i></div>
+                    <h4 class="text-lg font-bold text-white mb-3">تفکیک فیزیکی جریان مراجعین</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed font-light">
+                        طراحی پله‌های برقی متعدد بین طبقات و آسانسورهای تخت‌بر عریض با ظرفیت بالا، ترافیک انسانی و انتقال آلودگی‌ها را به صفر مطلق نزدیک کرده است.
+                    </p>
+                </div>
+                <!-- Point 2 -->
+                <div class="p-8 rounded-2xl bg-darkBg border border-white/5 hover:border-tealLux/30 transition-all duration-500">
+                    <div class="text-tealLux text-2xl mb-6"><i class="fa-solid fa-parking"></i></div>
+                    <h4 class="text-lg font-bold text-white mb-3">پارکینگ کلان با ظرفیت فوق استاندارد</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed font-light">
+                        بزرگترین دغدغه کادر درمان و بیماران یعنی ترافیک بلوار امین قم، با اختصاص دو طبقه منفی تمام مکانیزه و با دسترسی سریع برطرف شده است.
+                    </p>
+                </div>
+                <!-- Point 3 -->
+                <div class="p-8 rounded-2xl bg-darkBg border border-white/5 hover:border-tealLux/30 transition-all duration-500">
+                    <div class="text-tealLux text-2xl mb-6"><i class="fa-solid fa-briefcase-medical"></i></div>
+                    <h4 class="text-lg font-bold text-white mb-3">زنجیره تشخیص تا تامین نهایی</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed font-light">
+                        مراجع تنها با یک‌بار ورود به مجتمع، تمام پروسه آزمایشگاه، تصویربرداری، ویزیت فوق‌تخصص، جراحی محدود و خرید دارو را بدون خروج از سازه انجام می‌دهد.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: HIGH-END INVESTMENT CARD -->
+    <section id="invest" class="py-32 max-w-7xl mx-auto px-6">
+        <div class="bg-gradient-to-br from-neutral-900 via-darkBg to-teal-950/20 border border-white/10 rounded-3xl p-8 md:p-20 relative overflow-hidden" id="invest-card">
+            <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-tealLux/5 rounded-full blur-[120px]"></div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="text-goldLux font-bold text-xs uppercase tracking-widest block">فرصتی استراتژیک در شریان اصلی قم</span>
+                    <h2 class="text-3xl md:text-5xl font-black text-white leading-tight">تضمین پایداری سرمایه در یکی از مطمئن‌ترین حوزه‌های اقتصادی کشور</h2>
+                    <p class="text-slate-400 text-sm md:text-base leading-relaxed font-light">
+                        حضور در مرکز سلامت زاگرس صرفاً مالکیت یک مطب یا واحد تجاری نیست؛ بلکه عضویت رسمی در یک اکوسیستم استراتژیک سلامت است. تقاضای پایدار خدمات درمانی، لوکیشن بی‌پذیرش در بلوار امین قم و استانداردهای هتلینگ لوکس، ارزش افزوده ملکی شما را از تورم‌های اقتصادی کاملاً مصون نگاه می‌دارد.
+                    </p>
+                </div>
+                
+                <!-- Premium Glassmorphic Form -->
+                <div class="lg:col-span-5 bg-white/[0.02] border border-white/10 p-8 rounded-2xl shadow-2xl backdrop-blur-md">
+                    <h4 class="text-lg font-bold text-white mb-1 flex items-center gap-2">
+                        <i class="fa-solid fa-shield-halved text-goldLux"></i> درخواست مشاوره خرید واحدها
+                    </h4>
+                    <p class="text-xs text-slate-500 mb-6">جهت واگذاری لاین‌های تجاری یا مطب‌های تخصصی پزشکان.</p>
+                    
+                    <form class="space-y-4" onsubmit="event.preventDefault(); alert('اطلاعات شما در دپارتمان فروش هلدینگ زاگرس ثبت شد. کارشناسان ما به زودی تماس خواهند گرفت.');">
+                        <div>
+                            <label class="text-[10px] uppercase font-bold tracking-wider text-slate-400 block mb-1">نام متقاضی</label>
+                            <input type="text" required class="w-full bg-black/40 border border-white/10 focus:border-tealLux px-4 py-3.5 rounded-xl text-sm text-white focus:outline-none transition-all duration-300" placeholder="مثال: دکتر صالحی" />
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase font-bold tracking-wider text-slate-400 block mb-1">تلفن همراه مستقیم</label>
+                            <input type="tel" required class="w-full bg-black/40 border border-white/10 focus:border-tealLux px-4 py-3.5 rounded-xl text-sm text-left text-white focus:outline-none transition-all duration-300" placeholder="0912xxxxxxx" />
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-goldLux to-amber-600 hover:opacity-95 text-black font-black text-xs py-4 rounded-xl shadow-lg shadow-goldLux/10 tracking-wider uppercase transition-all duration-300">
+                            ثبت دیتای سرمایه‌گذاری
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREMIUM DETAILED FOOTER -->
+    <footer class="bg-[#030508] border-t border-white/[0.03] py-20 px-6 md:px-12 relative z-10">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+            <div class="lg:col-span-5 space-y-6">
+                <span class="text-xl font-black tracking-widest text-white">ZAGROS <span class="text-tealLux">GROUP</span></span>
+                <p class="text-xs text-slate-500 leading-relaxed max-w-sm font-light">
+                    مرکز سلامت زاگرس، نماد تلفیق تکنولوژی، کارآمدی و آرامش روانی مراجعین در قلب استان قم؛ طراحی و اجرا توسط دپارتمان مهندسی شرکت‌های سهامی خاص زاگرس (تاسیس ۱۳۸۶).
+                </p>
+                <div class="flex gap-3 pt-2">
+                    <a href="#" class="w-9 h-9 rounded-xl bg-white/[0.02] border border-white/10 flex items-center justify-center text-slate-400 hover:text-white transition-colors"><i class="fa-brands fa-instagram text-sm"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-xl bg-white/[0.02] border border-white/10 flex items-center justify-center text-slate-400 hover:text-white transition-colors"><i class="fa-brands fa-telegram text-sm"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-xl bg-white/[0.02] border border-white/10 flex items-center justify-center text-slate-400 hover:text-white transition-colors"><i class="fa-brands fa-linkedin-in text-sm"></i></a>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-12 text-xs">
+                <div class="space-y-4">
+                    <h5 class="text-white font-bold tracking-wider uppercase border-r-2 border-tealLux pr-3">مختصات جغرافیایی و خطوط ارتباطی</h5>
+                    <ul class="space-y-4 text-slate-400 font-light">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-map-pin text-tealLux"></i> قم، بلوار امین، بین کوچه ۹ و ۱۱</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-phone text-tealLux"></i> خط ویژه دپارتمان مرکزی: ۳۷۴۸۸-۰۲۵</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-envelope text-slate-500"></i> دامین رسمی: www.zagros.sale</li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h5 class="text-white font-bold tracking-wider uppercase border-r-2 border-goldLux pr-3">دسترسی‌های سریع سایت</h5>
+                    <div class="grid grid-cols-2 gap-2 text-slate-500 font-light">
+                        <a href="#vision" class="hover:text-tealLux transition">رویکرد مدرنیسم</a>
+                        <a href="#metrics" class="hover:text-tealLux transition">ابعاد و محاسبات</a>
+                        <a href="#interactive-floors" class="hover:text-tealLux transition">تفکیک کلینیک‌ها</a>
+                        <a href="#invest" class="hover:text-tealLux transition">فرم سرمایه‌گذاری</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto border-t border-white/[0.03] mt-16 pt-8 flex flex-col sm:flex-row justify-between items-center text-[10px] text-slate-600 gap-4">
+            <p>© تمامی حقوق معنوی سازه و مستندات رندرینگ متعلق به گروه ساختمانی زاگرس می‌باشد.</p>
+            <p class="tracking-widest uppercase">Premium Architectural Concept</p>
+        </div>
+    </footer>
+
+    <!-- GREEN SOCK ANIMATION PLATFORM (GSAP) & SCROLL TRIGGER -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Dynamic Loading & Custom Progress Bar Update on Scroll
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("progress-bar").style.width = scrolled + "%";
+        });
+
+        // 1. Cinematic Hero Animation on Load
+        window.addEventListener('load', () => {
+            gsap.from("#hero-content", { y: 60, opacity: 0, duration: 1.2, ease: "power4.out" });
+            gsap.from("#hero-media", { scale: 0.9, opacity: 0, duration: 1.4, delay: 0.2, ease: "power4.out" });
+        });
+
+        // 2. Vision Section Smooth Scrub Reveal
+        gsap.from("#vision-img", {
+            scrollTrigger: {
+                trigger: "#vision",
+                start: "top 85%",
+                scrub: 1
+            },
+            y: 50,
+            opacity: 0.3
+        });
+        gsap.from("#vision-text", {
+            scrollTrigger: {
+                trigger: "#vision",
+                start: "top 75%",
+            },
+            x: -40,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out"
+        });
+
+        // 3. Staggered Metrics Cards POP on Scroll
+        gsap.from("#metrics-grid > div", {
+            scrollTrigger: {
+                trigger: "#metrics",
+                start: "top 80%"
+            },
+            y: 40,
+            opacity: 0,
+            stagger: 0.15,
+            duration: 0.8,
+            ease: "power2.out"
+        });
+
+        // 4. Interactive Floor Image Switcher Logic (Triggered via scrolling past elements)
+        const triggers = document.querySelectorAll('.floor-trigger');
+        const images = {
+            f3: document.getElementById('img-f3'),
+            f2: document.getElementById('img-f2'),
+            f1: document.getElementById('img-f1'),
+            fg: document.getElementById('img-fg'),
+            fb: document.getElementById('img-fb'),
+        };
+
+        triggers.forEach(trigger => {
+            ScrollTrigger.create({
+                trigger: trigger,
+                start: "top 60%",
+                end: "bottom 60%",
+                onEnter: () => switchFloorImage(trigger.dataset.floor),
+                onEnterBack: () => switchFloorImage(trigger.dataset.floor),
+            });
+        });
+
+        function switchFloorImage(floorId) {
+            // Fade out all images
+            Object.values(images).forEach(img => img.style.opacity = '0');
+            // Fade in target image
+            if(images[floorId]) {
+                images[floorId].style.opacity = '1';
+            }
+        }
+
+        // 5. Privileges Section Animations
+        gsap.from("#priv-grid > div", {
+            scrollTrigger: {
+                trigger: "#privileges",
+                start: "top 75%"
+            },
+            scale: 0.95,
+            opacity: 0,
+            stagger: 0.2,
+            duration: 1,
+            ease: "power3.out"
+        });
+
+        // 6. Luxury Invest Card Reveal Animation
+        gsap.from("#invest-card", {
+            scrollTrigger: {
+                trigger: "#invest",
+                start: "top 80%",
+                scrub: 1
+            },
+            y: 60,
+            opacity: 0.5
+        });
+    </script>
+</body>
+</html>
                     بنیان‌گذار گروه ساختمانی زاگرس (سید روح‌اله نورالدینی) سنگ بنای این مجموعه را در سال ۱۳۸۶ با تیمی از جوانان مستعد بنا نهاد. اکنون، پس از نزدیک به دو دهه فعالیت مستمر، پروژه مرکز سلامت زاگرس با عبور از کلیشه‌های ملموس فضاهای درمانی سنتی، وارد قلمرو «مدرنیسم مفهومی» شده است. فضایی که در نگاه اول شکوه مدرن بودن را القا می‌کند و در نگاه دوم، اعتمادی عمیق در مخاطب می‌سازد.
                 </p>
                 <div class="grid grid-cols-2 gap-6 pt-4 border-t border-white/5">
