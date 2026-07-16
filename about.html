@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مرکز سلامت زاگرس | داستان ما</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { darkBg: '#05070c', goldLux: '#d4af37', tealLux: '#0aa394' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Vazirmatn', sans-serif; background-color: #05070c; color: #e2e8f0; }
+    </style>
+</head>
+<body class="antialiased pt-24">
+
+    <header class="fixed top-0 left-0 w-full z-50 bg-darkBg/60 backdrop-blur-xl border-b border-white/[0.03] py-4 px-6 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <span class="text-sm font-black text-white tracking-widest">ZAGROS HEALTH</span>
+        </div>
+        <nav class="flex gap-6 text-xs font-bold text-slate-400">
+            <a href="index.html" class="hover:text-white transition">خانه</a>
+            <a href="floors.html" class="hover:text-white transition">مهندسی طبقات</a>
+            <a href="about.html" class="text-tealLux">داستان زاگرس</a>
+            <a href="invest.html" class="hover:text-white transition">سرمایه‌گذاری</a>
+        </nav>
+    </header>
+
+    <section class="max-w-4xl mx-auto px-6 py-12 space-y-12 text-right">
+        <div class="space-y-4">
+            <span class="text-goldLux text-xs font-bold">بیش از دو دهه مهندسی و تعهد</span>
+            <h1 class="text-4xl font-black text-white">شرکت ساختمانی زاگرس</h1>
+            <p class="text-slate-400 leading-relaxed text-sm md:text-base">
+                سنگ بنای جریان مهندسی زاگرس در سال ۱۳۸۶ توسط سید روح‌اله نورالدینی گذاشته شد[span_5](start_span)[span_5](end_span). تخصص ما، فراتر از بتن و آهن، خلق فضاهای استراتژیکی است که با روح و روان مراجعین ارتباط برقرار کنند. پروژه عظیم مرکز سلامت زاگرس تجلی سال‌ها تجربه در ارائه سازه‌های مانا و بی‌رقیب است[span_6](start_span)[span_6](end_span).
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8">
+            <div class="p-8 rounded-xl bg-white/[0.01] border border-white/5">
+                <h3 class="text-white font-bold mb-2">اصول ما</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    ما معتقدیم یک مرکز درمانی نباید حس ترس ایجاد کند. دیسیپلین، دقت هندسی و امضای بصری پایدار در تمامی متریال‌های پروژه زاگرس رعایت شده است.
+                </p>
+            </div>
+            <div class="p-8 rounded-xl bg-white/[0.01] border border-white/5">
+                <h3 class="text-white font-bold mb-2">مهندسی مدرن</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    از شبیه‌سازی جریان هوا تا مانیتورینگ متمرکز دما و رطوبت، تمام تجهیزات و تأسیسات منطبق بر آخرین استانداردهای نوین ساختمانی در ایران است.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#030508] border-t border-white/[0.03] py-12 px-6 text-center text-slate-500 text-xs mt-20">
+        <p>© تمامی حقوق مادی و معنوی متعلق به گروه ساختمانی زاگرس می‌باشد (تاسیس ۱۳۸۶)[span_7](start_span)[span_7](end_span).</p>
+    </footer>
+
+    <script>
+        const lenis = new Lenis();
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+    </script>
+</body>
+</html>
